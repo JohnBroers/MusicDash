@@ -1,0 +1,55 @@
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import Agenda from './components/agenda/Agenda.vue'
+import Archive from './components/agenda/Archive.vue'
+import Login from './components/Login.vue'
+import firebase from 'firebase'
+
+Vue.use(VueRouter);
+
+const routes = [
+    { 
+        path: '*', 
+        component: Agenda
+    },
+        { 
+        path: '/', 
+        component: Agenda,
+        name: 'agenda' 
+    },
+    { 
+        path: '/archive', 
+        component: Archive,
+        name: 'archive'
+    },
+    { 
+        path: '/login', 
+        component: Login,
+        name: 'login',
+        meta: {
+            requiresGuest: true
+        }
+    }
+];
+
+let router = new VueRouter({
+    routes,
+    mode: 'history',
+    linkActiveClass: "navigation__link--active",
+});
+
+router.beforeEach((to, from, next) => {
+    let currentUser = firebase.auth().currentUser;
+    let requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+    let requiresGuest = to.matched.some(record => record.meta.requiresGuest);
+
+    if(requiresAuth && !currentUser) {
+        next('login')
+    } else if (requiresGuest && currentUser) {
+        next('/')
+    } else {
+        next()
+    }
+});
+
+export default router;

@@ -1,28 +1,46 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <app-header />
+    <router-view></router-view>
+    <modal v-if="showModal" @close="showModal = false">
+        <event-form></event-form>
+    </modal>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppHeader from './components/Header.vue'
+import Modal from './components/Modal'
+import EventForm from './components/EventForm'
+import { mapActions, mapState } from 'vuex'
+import firebase from 'firebase';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    AppHeader,
+    Modal,
+    EventForm
+  },
+  computed: {
+  ...mapState([
+    'selectedConcert',
+    'showModal'
+  ])
+  },
+  methods: {
+    ...mapActions([
+        'fetchEvents',
+        'setLoginStatus'
+    ])
+  },
+  created() {
+    this.fetchEvents();
+    if(firebase.auth().currentUser) {
+        this.setLoginStatus(true);
+    }
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+

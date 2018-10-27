@@ -1,0 +1,35 @@
+.login {
+    &__wrapper {
+        display: flex;
+        justify-content: center;
+        background-color: white;
+        border-radius: 5px;
+        padding: 2em;
+        margin-top: 2em;
+    }
+    &__form {
+        max-width: 450px;
+        width: 100%;
+        padding: 2em 1em;
+        .title {
+            text-align: center;
+            margin-bottom: 2em;
+        }
+    }
+}
+
+.form-errors {
+    margin-top: 2em;
+    font-weight: 500;
+    color: red;
+    display: flex;
+    align-items: center;
+    &__icon {
+        padding: 0 1em;
+    }
+    &__message {
+        p {
+            margin: 0;
+        }
+    }
+}
