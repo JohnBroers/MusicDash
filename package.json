@@ -10,6 +10,7 @@
   "dependencies": {
     "firebase": "^5.2.0",
     "moment": "^2.22.2",
+    "nprogress": "^0.2.0",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
     "vuefire": "^1.4.5",

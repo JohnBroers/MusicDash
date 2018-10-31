@@ -1,0 +1,21 @@
+.btn-primary,
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:focus {
+	padding: 0.5em 3.5em;
+	background-color: $dark-blue;
+	border: 0;
+	font-weight: 600;
+	box-shadow: none;
+	border-radius: $button-border-radius;
+	&:hover {
+		background-color: darken($dark-blue, 10%);
+	}
+}
+
+.btn-large,
+.btn-large:not(:disabled):not(.disabled):active,
+.btn-large:focus {
+	width: 100%;
+	padding: 1em 3.5em;
+	font-size: 18px;
+}

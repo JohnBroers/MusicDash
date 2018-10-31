@@ -1,27 +1,18 @@
 .toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 60px;
-    border-bottom: 1px solid rgba(0,0,0,.1);
-    margin: 0 0 1em;
-    &__filters {
-        label {
-            color: #fff;
-            font-weight: 600;
-            margin: 0;
-            padding: 0 0 0 .5em;
-            &:hover {
-                cursor: pointer;
-            }
-        }
-        input {
-            &:hover {
-                cursor: pointer;
-            }
-        }
-    }
-    &__actions {
-
-    }
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 1em 0;
+	@media screen and (max-width: 768px) {
+		flex-direction: column;
+		height: auto;
+		&__actions {
+			margin-top: 1em;
+		}
+	}
+	&__filters {
+		label {
+			color: #fff;
+		}
+	}
 }

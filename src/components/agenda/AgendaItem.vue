@@ -1,28 +1,26 @@
 <template>
-    <div class="row agenda__item" :class="{'agenda__item--interested': event.event.details.status === 'interested'}">
-        <div class="col-2 agenda__item__date">
-            <p>{{ concertDate(event.event.details.date) }}</p>
-        </div>
-        <a :href="event.event.details.url" target="_blank" class="col-6 agenda__item__title">
-            <h1>{{ event.event.details.title }}</h1>
-            <p v-if="event.event.details.support">+ {{event.event.details.support}}</p>
-        </a>
-        <div class="col-3 agenda__item__info">
-            <div>
-                <p class="agenda__item__label agenda__item__label--location"><i class="fas fa-map-marker-alt"></i> {{ event.event.details.location }}</p>
+    <article class="agenda-item__wrapper">
+        <div class="agenda-item" :class="{'agenda-item--interested': event.event.details.status === 'interested'}">
+            <div class="agenda-item__date">
+                <p class="agenda-item__date__day">{{ concertDate(event.event.details.date).day }}</p>
+                <p class="agenda-item__date__month">{{ concertDate(event.event.details.date).month }}</p>
             </div>
-            <div>
-                <p class="agenda__item__label">
-                    <i v-if="event.event.details.status === 'interested'" class="fas fa-question"></i>
-                    <i v-else class="fas fa-calendar-check"></i>
-                        {{ event.event.details.status }}</p>
-                <p v-if="event.event.details.soldout" class="agenda__item__label agenda__item__label--soldout">{{ isSoldOut(event.event.details.soldout) }}</p>
+            <a :href="event.event.details.url" target="_blank" class="agenda-item__title">
+                <h1>{{ event.event.details.title }}</h1>
+                <p v-if="event.event.details.support" class="agenda-item__title__support">+ {{event.event.details.support}}</p>
+            </a>
+            <div class="agenda-item__info">
+                <p class="agenda-item__info--location">{{ event.event.details.location }}</p>
             </div>
         </div>
-        <div class="col-1 text-center agenda__item__actions">
-            <p v-if="isLoggedIn" @click="editConcert(event);"><i class="fas fa-edit"></i></p>
+        <div class="agenda-item__status">
+            <i v-if="event.event.details.status === 'interested'" class="fas fa-question"></i>
+            <i v-else class="fas fa-calendar-check"></i>
         </div>
-    </div>
+        <div class="agenda-item__actions">
+            <i class="fas fa-edit" v-if="isLoggedIn" @click="editConcert(event);"></i>
+        </div>
+    </article>
 </template>
 
 <script>
@@ -43,7 +41,10 @@ export default {
         concertDate(date) {
             const newDate = new Date(date);
             const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            return newDate.getDate() + ' ' + months[newDate.getMonth()];
+            return {
+                day: ("0" + newDate.getDate()).slice(-2),
+                month: months[newDate.getMonth()]
+            }
         },
         isSoldOut(val) {
             if(val) return 'Sold out!';

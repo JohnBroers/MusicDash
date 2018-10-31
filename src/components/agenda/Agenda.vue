@@ -1,7 +1,9 @@
 <template>
     <div class="container agenda">
         <filter-bar></filter-bar>
-        <agenda-item v-for="event in upcomingConcerts" :event="event" :key="event.key"></agenda-item>
+        <transition-group tag="div" class="agenda__wrapper--animation" name="list">
+            <agenda-item v-for="event in upcomingConcerts" :event="event" :key="event.key"></agenda-item>
+        </transition-group>
     </div>
 </template>
 

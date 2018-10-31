@@ -7,6 +7,9 @@ import router from './router'
 import { store } from './store'
 import './assets/scss/main.scss'
 
+import '../node_modules/nprogress/nprogress.css'
+
+
 window.moment = require('moment');
 
 Vue.config.productionTip = false

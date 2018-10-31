@@ -1,14 +1,17 @@
-@import 'colors/colors';
-@import 'typography/typography';
-@import 'elements/header';
-@import 'elements/modal';
-@import 'elements/form';
-@import 'elements/buttons';
-@import 'components/agenda-item';
-@import 'components/agenda-filterbar';
-@import 'components/login';
+// Partials
+@import 'partials/colors';
+@import 'partials/reset';
+@import 'partials/base';
+@import 'partials/animations';
+@import 'partials/typography';
 
-body {
-    background-color: $background-color;
-    font-family: 'Montserrat', sans-serif;
-}
+// Layout
+@import 'layout/header';
+@import 'layout/buttons';
+
+// Components
+@import 'components/agenda-filterbar';
+@import 'components/agenda-item';
+@import 'components/form';
+@import 'components/login';
+@import 'components/modal';

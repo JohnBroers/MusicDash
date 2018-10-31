@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import {  mapActions, mapMethods } from 'vuex'
+import {  mapActions } from 'vuex'
 
 export default {
   methods: {
@@ -45,7 +45,9 @@ export default {
 }
 
 .modal-container {
-  width: 750px;
+  max-width: 750px;
+  width: 90%;
+  margin: 0px auto;
   margin: 0px auto;
   padding: 20px 30px;
   background-color: #fff;

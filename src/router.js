@@ -4,6 +4,7 @@ import Agenda from './components/agenda/Agenda.vue'
 import Archive from './components/agenda/Archive.vue'
 import Login from './components/Login.vue'
 import firebase from 'firebase'
+import NProgress from 'nprogress';
 
 Vue.use(VueRouter);
 
@@ -51,5 +52,19 @@ router.beforeEach((to, from, next) => {
         next()
     }
 });
+
+router.beforeResolve((to, from, next) => {
+    if(to.name) {
+        NProgress.start();
+        NProgress.configure({
+            showSpinner: false        
+        })
+    }
+    next()
+})
+
+router.afterEach(() => {
+    NProgress.done();
+})
 
 export default router;
