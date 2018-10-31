@@ -86,7 +86,7 @@ const getters = {
 				return string
 			})
 
-		return newArray
+		return newArray.join('\n')
 	}
 }
 

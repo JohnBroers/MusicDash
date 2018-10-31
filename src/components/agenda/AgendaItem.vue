@@ -27,33 +27,27 @@
 import { mapState, mapActions } from 'vuex'
 
 export default {
-    props: ['event'],
-    computed: {
-        ...mapState([
-            'isLoggedIn'
-        ])
-    },
-    methods: {
-        ...mapActions([
-            'setUpdatedConcert',
-            'displayModal'
-        ]),
-        concertDate(date) {
-            const newDate = new Date(date);
-            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            return {
-                day: ("0" + newDate.getDate()).slice(-2),
-                month: months[newDate.getMonth()]
-            }
-        },
-        isSoldOut(val) {
-            if(val) return 'Sold out!';
-        },
-        editConcert(event) {
-            this.setUpdatedConcert(event);
-            this.displayModal();
-        }
-    }
+	props: ['event'],
+	computed: {
+		...mapState(['isLoggedIn'])
+	},
+	methods: {
+		...mapActions(['setUpdatedConcert', 'displayModal']),
+		concertDate(date) {
+			const newDate = new Date(date)
+			const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+			return {
+				day: ('0' + newDate.getDate()).slice(-2),
+				month: months[newDate.getMonth()]
+			}
+		},
+		isSoldOut(val) {
+			if (val) return 'Sold out!'
+		},
+		editConcert(event) {
+			this.setUpdatedConcert(event)
+			this.displayModal()
+		}
+	}
 }
-
 </script>

@@ -1,3 +1,4 @@
+// List fade & move
 .list-enter-active,
 .list-leave-active,
 .list-move {
@@ -25,6 +26,7 @@
 	transform-origin: center top;
 }
 
+// Fade out
 .fade-enter-active,
 .fade-leave-active {
 	transition-duration: 0.5s;
@@ -35,4 +37,16 @@
 .fade-enter,
 .fade-leave-active {
 	opacity: 0;
+}
+
+// Zoomout
+.modal-enter,
+.modal-leave-active {
+	opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave-active .modal-container {
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
 }

@@ -40,8 +40,8 @@ export default {
 	data() {
 		return {
 			input: {
-				username: 'johnbroers93@gmail.com',
-				password: 'testtest'
+				username: '',
+				password: ''
 			},
 			errorMessage: '',
 			loadingButton: false
