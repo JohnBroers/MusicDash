@@ -57,6 +57,7 @@ const getters = {
         date.setDate(date.getDate() - 1)
         return new Date(concert.event.details.date) < date
       })
+      .sort((a, b) => new Date(a.event.details.date) - new Date(b.event.details.date))
       .reverse()
 
     if (state.filterStatus) {
@@ -77,6 +78,7 @@ const getters = {
         date.setDate(date.getDate() - 1)
         return new Date(concert.event.details.date) > date
       })
+      .sort((a, b) => new Date(a.event.details.date) - new Date(b.event.details.date))
       .map(concert => {
         const datum = new Date(concert.event.details.date)
         const day = ('0' + datum.getDate()).slice(-2)
