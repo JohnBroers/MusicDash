@@ -1,13 +1,13 @@
 import { initializeApp } from 'firebase'
 
 const app = initializeApp({
-    apiKey: "AIzaSyDQI0mkWlQertVa2tdjKdu3uQfT0SI3vHQ",
-    authDomain: "musicdashboard-5f358.firebaseapp.com",
-    databaseURL: "https://musicdashboard-5f358.firebaseio.com",
-    projectId: "musicdashboard-5f358",
-    storageBucket: "musicdashboard-5f358.appspot.com",
-    messagingSenderId: "488363916342"
-});
+  apiKey: process.env.VUE_APP_API_KEY,
+  authDomain: process.env.VUE_APP_AUTHDOMAIN,
+  databaseURL: process.env.VUE_APP_DATABASEURL,
+  projectId: process.env.VUE_APP_PROJECTID,
+  storageBucket: process.env.VUE_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.VUE_APP_MESSAGINGSENDERID
+})
 
-export const db = app.database();
-export const eventsRef = db.ref('events');
+export const db = app.database()
+export const eventsRef = db.ref('events')

@@ -4,10 +4,10 @@
 
 <script>
 export default {
-	props: ['mode'],
-	data() {
-		return {}
-	}
+  props: ['mode'],
+  data () {
+    return {}
+  }
 }
 </script>
 
@@ -16,8 +16,8 @@ $white-green: #def9d9;
 $black: #000;
 
 .lds-dual-ring {
-	display: inline-block;
-	width: 64px;
+    display: inline-block;
+    width: 64px;
 	height: 64px;
 	margin-left: 50%;
 	transform: translateX(-50%);

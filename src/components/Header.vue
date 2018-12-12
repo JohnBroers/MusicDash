@@ -24,29 +24,28 @@
     </header>
 </template>
 
-
 <script>
 import { mapState } from 'vuex'
 import firebase from 'firebase'
 
 export default {
-	data() {
-		return {}
-	},
-	computed: {
-		...mapState(['isLoggedIn'])
-	},
-	methods: {
-		logout() {
-			firebase
-				.auth()
-				.signOut()
-				.then(() => {
-					this.$router.go({
-						path: this.$router.path
-					})
-				})
-		}
-	}
+  data () {
+    return {}
+  },
+  computed: {
+    ...mapState(['isLoggedIn'])
+  },
+  methods: {
+    logout () {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$router.go({
+            path: this.$router.path
+          })
+        })
+    }
+  }
 }
 </script>

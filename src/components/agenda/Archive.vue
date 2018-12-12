@@ -13,13 +13,12 @@ import AgendaItem from './AgendaItem'
 import FilterBar from './../FilterBar'
 
 export default {
-	components: {
-		AgendaItem,
-		FilterBar
-	},
-	computed: {
-		...mapGetters(['concertArchive'])
-	}
+  components: {
+    AgendaItem,
+    FilterBar
+  },
+  computed: {
+    ...mapGetters(['concertArchive'])
+  }
 }
 </script>
-

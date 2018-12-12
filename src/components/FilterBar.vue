@@ -16,28 +16,28 @@ import { mapState, mapActions } from 'vuex'
 import Toggle from './ui/Toggle'
 
 export default {
-	components: {
-		Toggle
-	},
-	computed: {
-		...mapState(['isLoggedIn']),
-		filterStatus: {
-			get() {
-				return this.$store.state.filterStatus
-			},
-			set(val) {
-				this.$store.commit('changeState', {
-					target: 'filterStatus',
-					value: val
-				})
-			}
-		}
-	},
-	methods: {
-		...mapActions(['displayModal']),
-		addConcert() {
-			this.displayModal()
-		}
-	}
+  components: {
+    Toggle
+  },
+  computed: {
+    ...mapState(['isLoggedIn']),
+    filterStatus: {
+      get () {
+        return this.$store.state.filterStatus
+      },
+      set (val) {
+        this.$store.commit('changeState', {
+          target: 'filterStatus',
+          value: val
+        })
+      }
+    }
+  },
+  methods: {
+    ...mapActions(['displayModal']),
+    addConcert () {
+      this.displayModal()
+    }
+  }
 }
 </script>

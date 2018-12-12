@@ -37,12 +37,12 @@
                 <label for="interested" class="form-check-label">Interested</label>
             </div>
         </div>
-        
+
         <div class="form-group">
             <div class="form-check">
                 <input type="checkbox" name="event_soldout" value="soldout" id="soldout" class="form-check-input" v-model="event.details.soldout">
                 <label for="soldout" class="form-check-label">Sold out?</label>
-            </div> 
+            </div>
         </div>
 
         <div class="form-errors" v-if="errorMessage" >
@@ -68,85 +68,86 @@ import Datepicker from 'vuejs-datepicker'
 import { mapState, mapActions } from 'vuex'
 
 export default {
-	data() {
-		return {
-			isFilled: false,
-			errorMessage: '',
-			emptyTitle: false
-		}
-	},
-	components: {
-		Datepicker
-	},
-	computed: {
-		...mapState(['isLoggedIn']),
-		event: {
-			get() {
-				return this.$store.state.selectedConcert
-			},
-			set(val) {
-				this.$store.commit('updateEvent', val)
-			}
-		},
-		concertDate: {
-			get() {
-				const date = this.$store.state.selectedConcert.details.date
-				if (date != '') {
+  data () {
+    return {
+      isFilled: false,
+      errorMessage: '',
+      emptyTitle: false
+    }
+  },
+  components: {
+    Datepicker
+  },
+  computed: {
+    ...mapState(['isLoggedIn']),
+    event: {
+      get () {
+        return this.$store.state.selectedConcert
+      },
+      set (val) {
+        this.$store.commit('updateEvent', val)
+      }
+    },
+    concertDate: {
+      get () {
+        const date = this.$store.state.selectedConcert.details.date
+        if (date !== '') {
+          // eslint-disable-next-line
 					this.isFilled = true
-				}
-				return date
-			},
-			set(val) {
-				const newDate = val.toDateString()
-				this.$store.commit('updateDate', newDate)
-			}
-		}
-	},
-	methods: {
-		...mapActions(['addEvent', 'updateEvent', 'removeConcert', 'clearForm', 'hideModal']),
-		updateSubmitEvent(event) {
-			if (this.validate(event)) {
-				this.emptyTitle = false
-				this.errorMessage = ''
-				this.updateEvent(event)
-				this.hideModal()
-				this.clearForm()
-			} else {
-				this.emptyTitle = true
-				this.errorMessage = 'Event can not be updated.'
-			}
-		},
-		submitEvent(event) {
-			if (this.validate(event.details.title)) {
-				this.emptyTitle = false
-				this.errorMessage = ''
-				this.addEvent(event)
-				this.hideModal()
-				this.clearForm()
-			} else {
-				this.emptyTitle = true
-				this.errorMessage = 'Fill in a title.'
-			}
-		},
-		deleteEvent(event) {
-			if (this.validate(event.status.concertKey)) {
-				this.emptyTitle = false
-				this.errorMessage = ''
-				this.removeConcert(event.status.concertKey)
-				this.hideModal()
-				this.clearForm()
-			} else {
-				this.emptyTitle = true
-				this.errorMessage = 'Event can not be deleted.'
-			}
-		},
-		validate(value) {
-			if (this.isLoggedIn && value != '') {
-				return true
-			} else {
-				return false
-			}
-		}
-	}
+        }
+        return date
+      },
+      set (val) {
+        const newDate = val.toDateString()
+        this.$store.commit('updateDate', newDate)
+      }
+    }
+  },
+  methods: {
+    ...mapActions(['addEvent', 'updateEvent', 'removeConcert', 'clearForm', 'hideModal']),
+    updateSubmitEvent (event) {
+      if (this.validate(event)) {
+        this.emptyTitle = false
+        this.errorMessage = ''
+        this.updateEvent(event)
+        this.hideModal()
+        this.clearForm()
+      } else {
+        this.emptyTitle = true
+        this.errorMessage = 'Event can not be updated.'
+      }
+    },
+    submitEvent (event) {
+      if (this.validate(event.details.title)) {
+        this.emptyTitle = false
+        this.errorMessage = ''
+        this.addEvent(event)
+        this.hideModal()
+        this.clearForm()
+      } else {
+        this.emptyTitle = true
+        this.errorMessage = 'Fill in a title.'
+      }
+    },
+    deleteEvent (event) {
+      if (this.validate(event.status.concertKey)) {
+        this.emptyTitle = false
+        this.errorMessage = ''
+        this.removeConcert(event.status.concertKey)
+        this.hideModal()
+        this.clearForm()
+      } else {
+        this.emptyTitle = true
+        this.errorMessage = 'Event can not be deleted.'
+      }
+    },
+    validate (value) {
+      if (this.isLoggedIn && value !== '') {
+        return true
+      } else {
+        return false
+      }
+    }
+  }
 }
 </script>

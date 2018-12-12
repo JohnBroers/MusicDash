@@ -17,8 +17,8 @@
 import { mapActions } from 'vuex'
 
 export default {
-	methods: {
-		...mapActions(['hideModal', 'clearForm'])
-	}
+  methods: {
+    ...mapActions(['hideModal', 'clearForm'])
+  }
 }
 </script>

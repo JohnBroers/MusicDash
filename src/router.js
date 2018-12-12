@@ -4,67 +4,67 @@ import Agenda from './components/agenda/Agenda.vue'
 import Archive from './components/agenda/Archive.vue'
 import Login from './components/Login.vue'
 import firebase from 'firebase'
-import NProgress from 'nprogress';
+import NProgress from 'nprogress'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const routes = [
-    { 
-        path: '*', 
-        component: Agenda
-    },
-        { 
-        path: '/', 
-        component: Agenda,
-        name: 'agenda' 
-    },
-    { 
-        path: '/archive', 
-        component: Archive,
-        name: 'archive'
-    },
-    { 
-        path: '/login', 
-        component: Login,
-        name: 'login',
-        meta: {
-            requiresGuest: true
-        }
+  {
+    path: '*',
+    component: Agenda
+  },
+  {
+    path: '/',
+    component: Agenda,
+    name: 'agenda'
+  },
+  {
+    path: '/archive',
+    component: Archive,
+    name: 'archive'
+  },
+  {
+    path: '/login',
+    component: Login,
+    name: 'login',
+    meta: {
+      requiresGuest: true
     }
-];
+  }
+]
 
 let router = new VueRouter({
-    routes,
-    mode: 'history',
-    linkActiveClass: "navigation__link--active",
-});
+  routes,
+  mode: 'history',
+  linkActiveClass: 'navigation__link--active'
+})
 
 router.beforeEach((to, from, next) => {
-    let currentUser = firebase.auth().currentUser;
-    let requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-    let requiresGuest = to.matched.some(record => record.meta.requiresGuest);
+  let currentUser = firebase.auth().currentUser
+  let requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+  let requiresGuest = to.matched.some(record => record.meta.requiresGuest)
 
-    if(requiresAuth && !currentUser) {
-        next('login')
-    } else if (requiresGuest && currentUser) {
-        next('/')
-    } else {
-        next()
-    }
-});
+  if (requiresAuth && !currentUser) {
+    next('login')
+  } else if (requiresGuest && currentUser) {
+    next('/')
+  } else {
+    next()
+  }
+})
 
 router.beforeResolve((to, from, next) => {
-    if(to.name) {
-        NProgress.start();
-        NProgress.configure({
-            showSpinner: false        
-        })
-    }
-    next()
+  if (to.name) {
+    NProgress.start()
+    NProgress.configure({
+      showSpinner: false
+    })
+  }
+  next()
 })
 
 router.afterEach(() => {
-    NProgress.done();
+  NProgress.done()
 })
 
-export default router;
+export default router

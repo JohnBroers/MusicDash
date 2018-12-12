@@ -9,20 +9,19 @@ import './assets/scss/main.scss'
 
 import '../node_modules/nprogress/nprogress.css'
 
-
-window.moment = require('moment');
+window.moment = require('moment')
 
 Vue.config.productionTip = false
 
-Vue.use(VueFire);
+Vue.use(VueFire)
 
-let app;
+let app
 firebase.auth().onAuthStateChanged(user => {
-  if(!app) {
+  if (!app) {
     app = new Vue({
-        store,
-        router,
-        render: h => h(App)
+      store,
+      router,
+      render: h => h(App)
     }).$mount('#app')
   }
 })

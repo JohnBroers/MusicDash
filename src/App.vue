@@ -8,7 +8,7 @@
     <modal v-if="showModal" @close="showModal = false">
         <event-form />
     </modal>
-  </div> 
+  </div>
 </template>
 
 <script>
@@ -22,44 +22,42 @@ import firebase from 'firebase'
 import { eventsRef } from './firebase'
 
 export default {
-	name: 'app',
-	data() {
-		return {
-			isLoading: false
-		}
-	},
-	components: {
-		AppHeader,
-		Modal,
-		EventForm,
-		Loader
-	},
-	computed: {
-		...mapState(['showModal'])
-	},
-	methods: {
-		...mapActions(['setConcerts', 'setLoginStatus']),
-		getEvents() {
-			this.isLoading = true
-			eventsRef.on('value', snapshot => {
-				const concertList = []
-				snapshot.forEach(childSnapshot => {
-					const concert = childSnapshot.val()
-					concert.key = childSnapshot.key
-					concertList.push(concert)
-				})
-				this.isLoading = false
-				this.setConcerts(concertList)
-			})
-		}
-	},
-	created() {
-		this.getEvents()
-		if (firebase.auth().currentUser) {
-			this.setLoginStatus(true)
-		}
-	}
+  name: 'app',
+  data () {
+    return {
+      isLoading: false
+    }
+  },
+  components: {
+    AppHeader,
+    Modal,
+    EventForm,
+    Loader
+  },
+  computed: {
+    ...mapState(['showModal'])
+  },
+  methods: {
+    ...mapActions(['setConcerts', 'setLoginStatus']),
+    getEvents () {
+      this.isLoading = true
+      eventsRef.on('value', snapshot => {
+        const concertList = []
+        snapshot.forEach(childSnapshot => {
+          const concert = childSnapshot.val()
+          concert.key = childSnapshot.key
+          concertList.push(concert)
+        })
+        this.isLoading = false
+        this.setConcerts(concertList)
+      })
+    }
+  },
+  created () {
+    this.getEvents()
+    if (firebase.auth().currentUser) {
+      this.setLoginStatus(true)
+    }
+  }
 }
 </script>
-
-

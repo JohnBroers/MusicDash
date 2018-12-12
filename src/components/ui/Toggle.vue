@@ -1,13 +1,13 @@
 <template>
-    <label 
-        :for="'jb_toggleCheckbox_' + id" 
+    <label
+        :for="'jb_toggleCheckbox_' + id"
         class="toggleCheckbox">
-        <input 
-            type="checkbox" 
-            :name="'jb_toggleCheckbox_' + id" 
-            class="toggleCheckbox__input" 
-            :id="'jb_toggleCheckbox_' + id" 
-            :checked="value" 
+        <input
+            type="checkbox"
+            :name="'jb_toggleCheckbox_' + id"
+            class="toggleCheckbox__input"
+            :id="'jb_toggleCheckbox_' + id"
+            :checked="value"
             @change="$emit('input', $event.target.checked)"
         />
         <span class="toggleCheckbox__label"></span>
@@ -17,15 +17,15 @@
 
 <script>
 export default {
-	props: ['value'],
-	data() {
-		return {
-			id: null
-		}
-	},
-	mounted() {
-		this.id = this._uid
-	}
+  props: ['value'],
+  data () {
+    return {
+      id: null
+    }
+  },
+  mounted () {
+    this.id = this._uid
+  }
 }
 </script>
 
