@@ -55,9 +55,7 @@ export default {
       this.errorMessage = ''
       if (this.input.username !== '' && this.input.password !== '') {
         this.loadingButton = true
-        firebase
-          .auth()
-          .signInWithEmailAndPassword(this.input.username, this.input.password)
+        firebase.auth().signInWithEmailAndPassword(this.input.username, this.input.password)
           .then(
             () => {
               this.$router.go({
