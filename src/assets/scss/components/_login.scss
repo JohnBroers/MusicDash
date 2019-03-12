@@ -17,19 +17,3 @@
 		}
 	}
 }
-
-.form-errors {
-	display: flex;
-	align-items: center;
-	margin-top: 2em;
-	color: $danger-red;
-	font-weight: 500;
-	&__icon {
-		padding: 0 1em;
-	}
-	&__message {
-		p {
-			margin: 0;
-		}
-	}
-}

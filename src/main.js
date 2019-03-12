@@ -2,6 +2,7 @@ import './firebase'
 import Vue from 'vue'
 import App from './App.vue'
 import VueFire from 'vuefire'
+import VeeValidate from 'vee-validate'
 import firebase from 'firebase'
 import router from './router'
 import { store } from './store'
@@ -14,6 +15,13 @@ window.moment = require('moment')
 Vue.config.productionTip = false
 
 Vue.use(VueFire)
+Vue.use(VeeValidate, {
+  classes: true,
+  classNames: {
+    valid: 'is-valid',
+    invalid: 'is-invalid'
+  }
+})
 
 let app
 firebase.auth().onAuthStateChanged(user => {

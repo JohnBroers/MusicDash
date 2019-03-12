@@ -50,3 +50,14 @@
 	-webkit-transform: scale(1.1);
 	transform: scale(1.1);
 }
+
+@keyframes spin {
+	to {
+		-webkit-transform: rotate(360deg);
+	}
+}
+@-webkit-keyframes spin {
+	to {
+		-webkit-transform: rotate(360deg);
+	}
+}

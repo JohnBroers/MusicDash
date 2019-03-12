@@ -12,21 +12,30 @@
 			text-transform: uppercase;
 			font-weight: 600;
 			transition: all 200ms;
+			&.is-invalid {
+				color: $danger-red;
+			}
 		}
 		.form-control {
 			border: 0;
 			border-bottom: 2px solid $light-gray;
 			border-radius: 0;
-		}
-		.form-control:focus,
-		.form-control:valid {
-			outline: 0;
-			box-shadow: none;
-			border-color: $dark-blue;
-			+ .form-control-placeholder {
-				color: $dark-blue;
-				font-size: 11px;
-				transform: translate3d(0, -100%, 0);
+			&:focus,
+			&:valid {
+				outline: 0;
+				box-shadow: none;
+				border-color: $dark-blue;
+				+ .form-control-placeholder {
+					color: $dark-blue;
+					font-size: 11px;
+					transform: translate3d(0, -100%, 0);
+				}
+			}
+			&.is-invalid {
+				border-color: $danger-red;
+				& + .form-control-placeholder {
+					color: $danger-red;
+				}
 			}
 		}
 		&--datepicker {
@@ -58,14 +67,6 @@
 			}
 			.form-control[readonly] {
 				background-color: transparent;
-			}
-		}
-		&--error {
-			.form-control {
-				border-color: $danger-red;
-			}
-			.form-control-placeholder {
-				color: $danger-red;
 			}
 		}
 	}
@@ -118,6 +119,21 @@
 					background-color: darken($danger-red, 10%);
 				}
 			}
+		}
+	}
+	&-errors {
+		color: $danger-red;
+		font-weight: 500;
+		&__icon {
+			padding: 0 1em;
+		}
+		&__message {
+			p {
+				margin: 0;
+			}
+		}
+		&__list__item {
+			padding: .5em 0;
 		}
 	}
 }

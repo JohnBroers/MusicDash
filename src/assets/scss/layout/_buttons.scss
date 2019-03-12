@@ -19,3 +19,41 @@
 	padding: 1em 3.5em;
 	font-size: 18px;
 }
+
+.btn {
+	position: relative;
+}
+
+.btn__text {
+	display: block;
+	position: relative;
+	transition: all ease-in-out 0.3s;
+	top: 0;
+}
+.btn__spinner {
+	display: block;
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	left: 0;
+	right: 0;
+	top: 65px;
+	margin-left: auto;
+	margin-right: auto;
+	opacity: 0;
+	border: 3px solid rgba(255, 255, 255, 0.3);
+	border-radius: 50%;
+	border-top-color: #fff;
+	animation: spin 1s ease-in-out infinite;
+	transition: all ease-in-out 0.3s;
+}
+
+.btn--loading {
+	.btn__text {
+		top: -50px;
+	}
+	.btn__spinner {
+		top: 19px;
+		opacity: 1;
+	}
+}
