@@ -41,7 +41,6 @@ const getters = {
         return new Date(concert.event.details.date) > date
       })
       .sort((a, b) => new Date(a.event.details.date) - new Date(b.event.details.date))
-
     if (state.filterStatus) {
       return list.filter(concert => {
         return concert.event.details.status === 'going'
@@ -59,7 +58,6 @@ const getters = {
       })
       .sort((a, b) => new Date(a.event.details.date) - new Date(b.event.details.date))
       .reverse()
-
     if (state.filterStatus) {
       return list.filter(concert => {
         return concert.event.details.status === 'going'
@@ -71,12 +69,9 @@ const getters = {
   formatted () {
     let newArray = state.concerts
       .filter(concert => {
-        return concert.event.details.status === 'going'
-      })
-      .filter(concert => {
         let date = new Date()
         date.setDate(date.getDate() - 1)
-        return new Date(concert.event.details.date) > date
+        return concert.event.details.status === 'going' && new Date(concert.event.details.date) > date
       })
       .sort((a, b) => new Date(a.event.details.date) - new Date(b.event.details.date))
       .map(concert => {
@@ -89,6 +84,27 @@ const getters = {
       })
 
     return newArray.join('\n')
+  },
+  concertsByMonth () {
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    let concertsByMonth = {}
+
+    for(let i = 0; i <= 11; i++) {
+      concertsByMonth[i] = { 
+        month: months[i], 
+        counter: 0, 
+        events: [] }
+    }
+
+    state.concerts.forEach((concert) => {
+      let formatedDate = new Date(concert.event.details.date)
+      if (formatedDate.getFullYear() === new Date().getFullYear()) {
+        concertsByMonth[formatedDate.getMonth()].counter++
+        concertsByMonth[formatedDate.getMonth()]['events'].push(concert.event)
+      }
+    })
+
+    return concertsByMonth
   }
 }
 
