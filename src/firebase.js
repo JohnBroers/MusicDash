@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase'
+import { initializeApp } from 'firebase/app'
 
 const app = initializeApp({
   apiKey: process.env.VUE_APP_API_KEY,

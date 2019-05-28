@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import firebase from 'firebase'
+import firebase from 'firebase/app'
+import 'firebase/database'
 import { eventsRef } from './firebase'
 
 Vue.use(Vuex, firebase)
@@ -15,7 +16,7 @@ const state = {
       location: '',
       url: '',
       date: '',
-      status: 'going',
+      status: 'interested',
       soldout: false
     },
     status: {
@@ -89,10 +90,10 @@ const getters = {
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     let concertsByMonth = {}
 
-    for(let i = 0; i <= 11; i++) {
-      concertsByMonth[i] = { 
-        month: months[i], 
-        counter: 0, 
+    for (let i = 0; i <= 11; i++) {
+      concertsByMonth[i] = {
+        month: months[i],
+        counter: 0,
         events: [] }
     }
 
@@ -152,7 +153,7 @@ const actions = {
         location: '',
         url: '',
         date: '',
-        status: 'going',
+        status: 'interested',
         soldout: false
       },
       status: {

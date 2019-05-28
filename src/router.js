@@ -3,7 +3,8 @@ import VueRouter from 'vue-router'
 import Agenda from './components/agenda/Agenda.vue'
 import Archive from './components/agenda/Archive.vue'
 import Login from './components/Login.vue'
-import firebase from 'firebase'
+import firebase from 'firebase/app'
+import 'firebase/auth'
 import NProgress from 'nprogress'
 
 Vue.use(VueRouter)

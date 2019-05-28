@@ -1,20 +1,21 @@
-import './firebase'
 import Vue from 'vue'
 import App from './App.vue'
-import VueFire from 'vuefire'
+import { rtdbPlugin } from 'vuefire'
 import VeeValidate from 'vee-validate'
-import firebase from 'firebase'
+import firebase from 'firebase/app'
+import 'firebase/database'
+import 'firebase/auth'
 import router from './router'
 import { store } from './store'
 import './assets/scss/main.scss'
 
 import '../node_modules/nprogress/nprogress.css'
-
-window.moment = require('moment')
+import './registerServiceWorker'
 
 Vue.config.productionTip = false
 
-Vue.use(VueFire)
+Vue.use(rtdbPlugin)
+
 Vue.use(VeeValidate, {
   classes: true,
   classNames: {

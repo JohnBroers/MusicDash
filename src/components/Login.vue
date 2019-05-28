@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-8 login__wrapper">
-        <form action="" class="form login__form">
+        <form action="" class="form login__form" v-on:submit.prevent="validate()">
           <h2 class="title">Good to see you again!</h2>
           <div class="form-group">
             <input v-validate="'required|email'" data-vv-delay="1000" type="text" name="username" v-model="input.username" class="form-control" required />
@@ -33,7 +33,8 @@
 </template>
 
 <script>
-import firebase from 'firebase'
+import firebase from 'firebase/app'
+import 'firebase/auth'
 
 export default {
   data () {

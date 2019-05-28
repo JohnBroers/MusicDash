@@ -2,9 +2,9 @@
   <div id="app">
     <app-header />
     <transition name="fade" mode="out-in">
-		<router-view />
+    <router-view />
     </transition>
-	<loader v-if="isLoading" />
+    <loader v-if="isLoading" />
     <modal v-if="showModal" @close="showModal = false">
         <event-form />
     </modal>
@@ -18,7 +18,10 @@ import EventForm from './components/EventForm'
 import Loader from './components/ui/Loader'
 
 import { mapActions, mapState } from 'vuex'
-import firebase from 'firebase'
+
+import firebase from 'firebase/app'
+import 'firebase/database'
+import 'firebase/auth'
 import { eventsRef } from './firebase'
 
 export default {
