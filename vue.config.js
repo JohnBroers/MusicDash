@@ -11,5 +11,6 @@ module.exports = {
       appleTouchIcon: 'icons/152.png',
       maskIcon: 'icons/safari-pinned-tab.svg'
     }
-  }
+  },
+  publicPath: process.env.NODE_ENV === 'production' ? './' : '/'
 }
