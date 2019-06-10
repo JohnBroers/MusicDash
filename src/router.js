@@ -27,17 +27,15 @@ const routes = [
   {
     path: '/login',
     component: Login,
-    name: 'login',
-    meta: {
-      requiresGuest: true
-    }
+    name: 'login'
   }
 ]
 
 let router = new VueRouter({
   routes,
   mode: 'history',
-  linkActiveClass: 'navigation__link--active'
+  linkActiveClass: 'navigation__link--active',
+  base: process.env.environment === 'production' ? '/musicdash/' : '/'
 })
 
 router.beforeEach((to, from, next) => {

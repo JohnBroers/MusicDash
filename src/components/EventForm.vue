@@ -7,11 +7,6 @@
         </div>
 
         <div class="form-group">
-            <input type="text" name="support" id="event_support" class="form-control" v-model="event.details.support" autocomplete="off" required>
-            <label for="support" class="form-control-placeholder">Support</label>
-        </div>
-
-        <div class="form-group">
             <input type="text" v-validate="'required'" name="location" id="event_location" class="form-control" v-model="event.details.location" autocomplete="off" required>
             <label for="location" class="form-control-placeholder">Location</label>
         </div>

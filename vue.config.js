@@ -1,6 +1,7 @@
 module.exports = {
   pluginOptions: {
     webpackBundleAnalyzer: {
+      openAnalyzer: process.env.NODE_ENV === 'production'
     }
   },
   pwa: {
@@ -12,5 +13,5 @@ module.exports = {
       maskIcon: 'icons/safari-pinned-tab.svg'
     }
   },
-  publicPath: process.env.NODE_ENV === 'production' ? './' : '/'
+  publicPath: process.env.NODE_ENV === 'production' ? '/musicdash/' : '/'
 }

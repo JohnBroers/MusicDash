@@ -12,7 +12,6 @@ const state = {
     details: {
       type: 'concert',
       title: '',
-      support: '',
       location: '',
       url: '',
       date: '',
@@ -149,7 +148,6 @@ const actions = {
       details: {
         type: 'concert',
         title: '',
-        support: '',
         location: '',
         url: '',
         date: '',

@@ -58,7 +58,7 @@ export default {
               .then(
                 () => {
                   this.$router.go({
-                    path: this.$router.path
+                    name: 'agenda'
                   })
                 },
                 err => {

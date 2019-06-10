@@ -1,7 +1,7 @@
 <template>
     <header class="header">
         <div class="container">
-        <router-link to="/" class="logo">
+        <router-link :to="{name: 'agenda'}" class="logo">
             <h1>Music<span>Dash.</span></h1>
         </router-link>
         <nav>
@@ -41,7 +41,7 @@ export default {
       firebase.auth().signOut()
         .then(() => {
           this.$router.go({
-            path: this.$router.path
+            name: 'agenda'
           })
         })
     }
